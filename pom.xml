@@ -8,5 +8,6 @@
   <modules>
     <module>redis-lock</module>
     <module>redis-queue</module>
+    <module>redis-limit</module>
   </modules>
 </project>
