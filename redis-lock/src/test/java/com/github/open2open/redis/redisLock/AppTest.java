@@ -1,4 +1,4 @@
-package info.code.redis;
+package com.github.open2open.redis.redisLock;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
