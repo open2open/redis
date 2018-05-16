@@ -7,5 +7,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>redis-lock</module>
+    <module>redis-queue</module>
   </modules>
 </project>
