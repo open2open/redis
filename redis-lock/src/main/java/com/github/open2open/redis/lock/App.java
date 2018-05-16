@@ -1,4 +1,4 @@
-package com.github.open2open.redis.redisLock;
+package com.github.open2open.redis.lock;
 
 /**
  * Hello world!
