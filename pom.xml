@@ -10,6 +10,7 @@
     <module>redis-lock</module>
     <module>redis-queue</module>
     <module>redis-limit</module>
+    <module>redis-cache</module>
   </modules>
   
     <properties>
