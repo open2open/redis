@@ -9,7 +9,6 @@
   </parent>
   <groupId>com.github.open2open</groupId>
   <artifactId>redis-queue</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <name>redis-queue</name>
   <url>http://maven.apache.org</url>
   <properties>
