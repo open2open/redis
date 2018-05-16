@@ -1,6 +1,6 @@
 # redis
 需要写的项目  
-**redis lock(基于redis的分布式锁)** 
+**redis lock(基于redis的分布式锁)**   
 redis 分布式锁的实现思路  
 获取锁  
 释放锁  

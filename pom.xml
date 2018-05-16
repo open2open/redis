@@ -5,9 +5,27 @@
   <artifactId>redis</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  
   <modules>
     <module>redis-lock</module>
     <module>redis-queue</module>
     <module>redis-limit</module>
   </modules>
+  
+    <properties>
+        <jdk.version>1.8</jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jedis.version>2.9.0</jedis.version>
+    </properties>
+  
+  
+  <dependencyManagement>
+  	<dependencies>
+       <dependency>
+           <groupId>redis.clients</groupId>
+           <artifactId>jedis</artifactId>
+           <version>${jedis.version}</version>
+       </dependency>  		
+  	</dependencies>
+  </dependencyManagement>
 </project>

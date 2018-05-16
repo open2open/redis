@@ -7,7 +7,6 @@
     <artifactId>redis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.github.open2open</groupId>
   <artifactId>redis-lock</artifactId>
   <name>redis-lock</name>
   <url>http://maven.apache.org</url>
@@ -21,5 +20,9 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+    </dependency>    
   </dependencies>
 </project>
