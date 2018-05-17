@@ -12,7 +12,7 @@
 如果一个节点获取到锁之后,在没有完成后续的业务操作,锁就过期了,其它节点就获取到了这个锁,会不会照成并发的问题    
 ### redis lock的注解方式的实现 ###
 redis lock 基于spring proxy的方式实现
-redis lock 基于aspect方式的实现  
+redis lock 基于aspect方式的实现   
 ## redis queue(基于redis的分布式队列) ##
 ## redis limit(基于redis的限流工具) ##
 ## redis cache(基于redis的缓存工具) ##
