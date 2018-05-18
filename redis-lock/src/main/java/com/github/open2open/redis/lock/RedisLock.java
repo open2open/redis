@@ -5,14 +5,14 @@ import java.util.UUID;
 import redis.clients.jedis.Jedis;
 
 public class RedisLock {
-	private Jedis jedis;
+	private Jedis jedis ;
 	private ThreadLocal<String> valueTreadLocal = new ThreadLocal<String>();
 
-	public void setJedis(Jedis jedis) {
+	public void setJedis( Jedis jedis) {
 		this.jedis = jedis;
 	}
 
-	public boolean lock(String key,int count,long timeMills){
+	public boolean lock(String key,int count,long seconds){
 		String uuid = UUID.randomUUID().toString();
 		String value = key+":"+uuid;
 		valueTreadLocal.set(value);
@@ -21,8 +21,8 @@ public class RedisLock {
 			if(count <= 0){
 				break;
 			}
-			Long setnx = jedis.setnx(key, key);
-			if(setnx == 1){
+			String setnx = jedis.set(key, value, "NX", "EX", seconds);
+			if(setnx.equals("OK")){
 				flag = true;
 				return flag;
 			}else{
@@ -33,10 +33,17 @@ public class RedisLock {
 	}
 	
 	public boolean unlock(){
+		boolean flag = false;
 		String value = valueTreadLocal.get();
 		String key = value.split(":")[0];
-		jedis.del(key);
+		String setnx = jedis.set(key, value, "NX", "EX", 0);
 		valueTreadLocal.remove();
-		return true;
+		if(setnx.equals("OK")){
+			flag = true;
+			return flag;
+		}else{
+			flag = false;
+		}
+		return flag;
 	}
 }
