@@ -1,10 +1,13 @@
 package com.github.open2open.redis.lock;
 
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import redis.clients.jedis.Jedis;
 
 public class RedisLock {
+	private Logger logger = Logger.getAnonymousLogger();
 	private Jedis jedis ;
 	private ThreadLocal<String> valueTreadLocal = new ThreadLocal<String>();
 
@@ -16,17 +19,22 @@ public class RedisLock {
 		String uuid = UUID.randomUUID().toString();
 		String value = key+":"+uuid;
 		valueTreadLocal.set(value);
+		Thread currentThread = Thread.currentThread();
 		boolean flag = false;
-		while(true){
-			if(count <= 0){
-				break;
-			}
+		for(int i = count;i >= 0;i--){
 			String setnx = jedis.set(key, value, "NX", "EX", seconds);
 			if(setnx.equals("OK")){
 				flag = true;
-				return flag;
+				break;
 			}else{
 				flag = false;
+			}
+			if(flag == false){
+				try {
+					currentThread.wait(1000);
+				} catch (InterruptedException e) {
+					logger.log(Level.INFO, "wait fail", e);
+				}
 			}
 		}
 		return flag;
