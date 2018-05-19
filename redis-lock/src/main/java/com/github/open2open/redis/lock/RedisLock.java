@@ -12,10 +12,6 @@ public class RedisLock {
 	private JedisPool jedisPool;
 	private ThreadLocal<String> valueTreadLocal = new ThreadLocal<String>();
 
-	public JedisPool getJedisPool() {
-		return jedisPool;
-	}
-
 	public void setJedisPool(JedisPool jedisPool) {
 		this.jedisPool = jedisPool;
 	}
