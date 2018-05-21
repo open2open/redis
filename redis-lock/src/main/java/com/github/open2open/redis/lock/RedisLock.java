@@ -23,7 +23,6 @@ public class RedisLock {
 			String uuid = UUID.randomUUID().toString();
 			String value = key+":"+uuid;
 			valueTreadLocal.set(value);
-			Thread currentThread = Thread.currentThread();
 			for(int i = count;i >= 0;i--){
 				String setnx = jedis.set(key, value, "NX", "EX", seconds);
 				if(setnx.equals("OK")){
@@ -34,7 +33,7 @@ public class RedisLock {
 				}
 				if(flag == false){
 					try {
-						currentThread.wait(1000);
+						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 						logger.log(Level.INFO, "wait fail", e);
 					}
