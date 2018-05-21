@@ -15,4 +15,7 @@ redis lock 基于spring proxy的方式实现
 redis lock 基于aspect方式的实现   
 ## redis queue(基于redis的分布式队列) ##
 ## redis limit(基于redis的限流工具) ##
+### 实现思路 ###
+数据结构:key-value,其中key是需要限制的操作的对象的定义,value是需要限制的次数,还需要定义这个key的过期时间,表示在一定的时间内对限制对象访问频率的控制.
+用redis事务的方法,将计数器增加和设置缓存时间,两个命令放在一个事务中执行
 ## redis cache(基于redis的缓存工具) ##
