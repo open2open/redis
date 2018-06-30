@@ -1,0 +1,1 @@
+redis.pcall("HMSET", "redis_set", "max_permits", 300);
