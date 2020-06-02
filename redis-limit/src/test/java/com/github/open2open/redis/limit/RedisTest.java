@@ -10,6 +10,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 public class RedisTest {
+	
 	@Test
 	public void testMset(){
 		JedisPool jedisPool = null;
